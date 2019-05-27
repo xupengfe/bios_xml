@@ -1,3 +1,5 @@
+#!/usr/bin/python2.7
+
 import os
 
 FOLDER_PATH = '/root/bios_xml'
@@ -34,12 +36,11 @@ def set_bios_user():
     import XmlCli as cli
     cli.clb._setCliAccess("linux")
     cli.clb.ConfXmlCli()
-    cli.CvProgKnobs("EnableSgx=0x01, PrmrrSize=0x08000000, EnableAbove4GBMmio=0x01, PrimaryDisplay=0x00, PrimaryDisplay_inst_2=0x00, PrimaryDisplay_inst_3=0x00, PcieSwEqOverrid
-e=0x01, PcieRootPortAspm_20=0x02, PcieRootPortDptp_20=0x05, PcieRootPortHPE_20=0x01, Rtd3Tbt=0x01, DiscreteTbtSupport=0x01, TbtVtdBaseSecurity=0x01, TbtBootOn=0x02, TrOsup=0x01
-")
-    cli.CvProgKnobs("SecurityMode=0x01, TBTHotSMI=0x00, TBTHotNotify=0x00, Gpio5Filter=0x00, TBTSetClkReq=0x01, TbtLtr=0x01, TbtL1SubStates=0x00, Win10Support=0x02, DTbtControl
-ler_0=0x01, DTbthostRouterPortNumber_0=0x02, DTbtPcieExtraBusRsvd_0=0x6A, DTbtPcieMemRsvd_0=0x02E1, DTbtPciePMemRsvd_0=0x04A0, CsmControl=0x01, BootOrder_3=0x0003, BootOrder_4=
-0x0002, BootOrder_5=0x0000, AfterEoP=0x00")
+    cli.CvProgKnobs("EnableSgx=0x01, PrmrrSize=0x08000000, EnableAbove4GBMmio=0x01, PrimaryDisplay=0x00, PrimaryDisplay_inst_2=0x00, PrimaryDisplay_inst_3=0x00")
+    cli.CvProgKnobs("PcieSwEqOverride=0x01, PcieRootPortAspm_20=0x02, PcieRootPortDptp_20=0x05, PcieRootPortHPE_20=0x01, Rtd3Tbt=0x01, DiscreteTbtSupport=0x01")
+    cli.CvProgKnobs("TbtVtdBaseSecurity=0x01, TbtBootOn=0x02, TrOsup=0x01, SecurityMode=0x01, TBTHotSMI=0x00, TBTHotNotify=0x00, Gpio5Filter=0x00, TBTSetClkReq=0x01")
+    cli.CvProgKnobs("TbtLtr=0x01, TbtL1SubStates=0x00, Win10Support=0x02, DTbtController_0=0x01, DTbthostRouterPortNumber_0=0x02, DTbtPcieExtraBusRsvd_0=0x6A")
+    cli.CvProgKnobs("DTbtPcieMemRsvd_0=0x02E1, DTbtPciePMemRsvd_0=0x04A0, CsmControl=0x01, BootOrder_3=0x0003, BootOrder_4=0x0002, BootOrder_5=0x0000, AfterEoP=0x00")
     echo_none = 'echo none_set_done > /root/bios_xml/next_step'
     os.system(echo_none)
     print 'set none_set_done into /root/bios_xml/next_step'
