@@ -16,6 +16,7 @@ def get_xml():
     cli.clb._setCliAccess("linux")
     cli.clb.ConfXmlCli()
     cli.savexml(r"%s"%(XML_FILE))
+    print XML_FILE
 
 def set_bios(bios_items):
     sys.path.append(r"%s"%(XML_PATH))
