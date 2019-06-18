@@ -1,5 +1,30 @@
 ln -s  /root/bios_xml/bios_set.py  /usr/bin/bios_set.py
 
+
+
+python2.7
+import sys
+sys.path.append(r"/root/xmlcli/")
+import XmlCli as cli
+cli.clb._setCliAccess("linux")
+cli.clb.ConfXmlCli()
+
+>>> 
+>>> MyKnobsDict={}
+>>> cli.savexml() 
+CLI Spec Version = 0.7.1
+Compressed XML is not supported, Downloading Regular XML
+Host XML didnt exist or is different from Target XML, downloading Target XML..
+Saved XML Data as /root/xmlcli/out/PlatformConfig.xml
+0
+>>> cli.prs.EvalKnobsDepex(r"/root/xmlcli/out/PlatformConfig.xml",MyKnobsDict,"/root/Dep1.csv")
+Parsing Xml File /root/xmlcli/out/PlatformConfig.xml
+generated csv file /root/Dep1.csv 
+0
+>>> MyKnobsDict['SecurityMode']['Depex']  
+'Sif( TbtSetupFormSupport _NEQ_ 1 ) _AND_ Sif( DiscreteTbtSupport _EQU_ 0  )'
+>>> 
+
 -------------------------------------------------------------------------------------------------------------
 XmlCli Reference scripts which are based on XML Information & BIOS CLI interface protocol. 
 These Ref. scripts provides several capabilities such as Programming/Reading BIOS knobs, 
