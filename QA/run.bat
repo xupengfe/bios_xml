@@ -1,1 +1,0 @@
-..\XmlCliCmd.py XmlCliqa
