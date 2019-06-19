@@ -25,6 +25,46 @@ generated csv file /root/Dep1.csv
 'Sif( TbtSetupFormSupport _NEQ_ 1 ) _AND_ Sif( DiscreteTbtSupport _EQU_ 0  )'
 >>> 
 
+
+
+
+1.	Get current XML file,  and XML file was saved in /bios_xml_path/target.xml
+Command: 
+bios_set.py -g current
+		Output:
+		Last line: /bios_xml_path/target.xml
+
+2.	Recovered default BIOS setting, and saved default XML,  default XML file was saved in /root/target.xml
+Command:
+bios_set.py -g default
+	Output:
+		Last line: /bios_xml_path/target.xml
+
+
+3.	Set BIOS items into present BIOS, and saved final XML file in /bios_xml_path/target.xml
+Command:
+bios_set.py -s "DiscreteTbtSupport=0x1,TbtBootOn=0x2,TBTHotSMI=0x0,Gpio5Filter=0x0,TBTHotNotify=0x0,DTbtController_0=0x1,TBTSetClkReq=0x1,TbtLtr=0x1,DTbthostRouterPortNumber_0=0x2,DTbtPcieExtraBusRsvd_0=0x6A,DTbtPcieMemRsvd_0=0x6A,DTbtPcieMemRsvd_0=0x2E1,DTbtPciePMemRsvd_0=0x4A0,Win10Support=0x2,TrOsup=0x1,TbtL1SubStates=0x0,Rtd3Tbt=0x1,TbtVtdBaseSecurity=0x1,EnableSgx=0x1,PrmrrSize=0x8000000,EnableAbove4GBMmio=0x1,PrimaryDisplay_inst_3=0x0,PcieRootPortAspm_20=0x2,PcieRootPortHPE_20=0x1,PcieRootPortDptp_20=0x5,PcieSwEqOverride=0x1"
+         	Output:
+		Second last line: /bios_xml_path/target.xml
+		Last line: /bios_xml_path/out/TmpBiosKnobs.ini
+
+
+4.	Set BIOS as default setting first,  and then set BIOS items, and saved final XML file in /root/target.xml
+Command:
+bios_set.py -d "DiscreteTbtSupport=0x1,TbtBootOn=0x2,TBTHotSMI=0x0,Gpio5Filter=0x0,TBTHotNotify=0x0,DTbtController_0=0x1,TBTSetClkReq=0x1,TbtLtr=0x1,DTbthostRouterPortNumber_0=0x2,DTbtPcieExtraBusRsvd_0=0x6A,DTbtPcieMemRsvd_0=0x6A,DTbtPcieMemRsvd_0=0x2E1,DTbtPciePMemRsvd_0=0x4A0,Win10Support=0x2,TrOsup=0x1,TbtL1SubStates=0x0,Rtd3Tbt=0x1,TbtVtdBaseSecurity=0x1,EnableSgx=0x1,PrmrrSize=0x8000000,EnableAbove4GBMmio=0x1,PrimaryDisplay_inst_3=0x0,PcieRootPortAspm_20=0x2,PcieRootPortHPE_20=0x1,PcieRootPortDptp_20=0x5,PcieSwEqOverride=0x1"
+		Second last line: /bios_xml_path/target.xml
+		Last line: /bios_xml_path/out/TmpBiosKnobs.ini
+
+5. 	Set ini file into BIOS
+	bios_set.py -i ini_file_path
+	Set ini file 
+	Output:
+	Second last line: /bios_xml_path/target.xml
+	Last line: /bios_xml_path/out/TmpBiosKnobs.ini
+
+
+
+
 -------------------------------------------------------------------------------------------------------------
 XmlCli Reference scripts which are based on XML Information & BIOS CLI interface protocol. 
 These Ref. scripts provides several capabilities such as Programming/Reading BIOS knobs, 

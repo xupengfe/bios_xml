@@ -41,11 +41,24 @@ def set_bios(bios_items):
     cli.CvProgKnobs("%s"%(bios_items))
     print 'Set ' + bios_items + ' done.'
 
+def set_ini_bios(ini_path):
+    sys.path.append(r"%s"%(XML_PATH))
+    import XmlCli as cli
+    cli.clb._setCliAccess("linux")
+    try:
+        cli.clb.ConfXmlCli()
+    except:
+        print 'error'
+        sys.exit(2)
+    cli.clb.KnobsIniFile=r"%s"%(ini_path)
+    cli.CvProgKnobs()
+
 def main(argv):
     get_type = ''
     bios_set_items = ''
+    ini_file = ''
     try:
-        opts, args = getopt.getopt(argv, "hg:s:d:", ["get_type=","bios_set_items=","bios_set_items="])
+        opts, args = getopt.getopt(argv, "hg:s:d:i:", ["get_type=","bios_set_items=","bios_set_items="])
 
     except getopt.GetoptError:
         print 'Error: requestTest.py -g "default|current" | -s "SecurityMode=0x00, TBTHotSMI=0x00" | -d "SecurityMode=0x00, TBTHotSMI=0x00"'
@@ -82,6 +95,20 @@ def main(argv):
             set_bios(bios_set_items)
             get_xml()
             print INI_PATH
+        elif opt in ("-i", "--iId"):
+            ini_file = arg
+            if os.path.exists(ini_file):
+                print 'ini_file: ' + ini_file
+            else:
+                print 'ini_file: ' + ini_file + ' not exist'
+                sys.exit()
+            set_ini_bios(ini_file)
+            get_xml()
+            print INI_PATH
+        else:
+            print 'parm not correct, please -h to check'
+            sys.exit()
+
 
 if __name__ == "__main__":
     main(sys.argv[1:])
