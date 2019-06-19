@@ -59,9 +59,7 @@ bios_set.py -d "DiscreteTbtSupport=0x1,TbtBootOn=0x2,TBTHotSMI=0x0,Gpio5Filter=0
 	bios_set.py -i ini_file_path
 	Set ini file 
 	Output:
-	Second last line: /bios_xml_path/target.xml
-	Last line: /bios_xml_path/out/TmpBiosKnobs.ini
-
+	Last line: /bios_xml_path/target.xml
 
 
 
