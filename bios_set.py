@@ -104,7 +104,6 @@ def main(argv):
                 sys.exit()
             set_ini_bios(ini_file)
             get_xml()
-            print INI_PATH
         else:
             print 'parm not correct, please -h to check'
             sys.exit()
