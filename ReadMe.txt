@@ -1,3 +1,6 @@
+ln -s  /root/bios_xml/bios_set.py  /usr/bin/bios_set.py
+
+-------------------------------------------------------------------------------------------------------------
 XmlCli Reference scripts which are based on XML Information & BIOS CLI interface protocol. 
 These Ref. scripts provides several capabilities such as Programming/Reading BIOS knobs, 
 Fetching Platform XML from target, Flashing BIOS, Fetching BIOS, Ucode read, Save & Update,
