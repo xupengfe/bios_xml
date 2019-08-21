@@ -21,6 +21,8 @@ def get_xml():
     sys.path.append(r"%s"%(XML_PATH))
     import XmlCli as cli
     cli.clb._setCliAccess("linux")
+    n = cli.clb.ConfXmlCli()
+    assert n != 1, 'ConfXmlCli() return 1, please reboot and try'
     try:
         cli.clb.ConfXmlCli()
     except:
