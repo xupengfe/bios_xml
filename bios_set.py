@@ -21,37 +21,43 @@ def get_xml():
     sys.path.append(r"%s"%(XML_PATH))
     import XmlCli as cli
     cli.clb._setCliAccess("linux")
-    try:
-        cli.clb.ConfXmlCli()
-    except:
-        print 'error'
-        sys.exit(2)
-    cli.savexml(r"%s"%(XML_FILE))
-    print XML_FILE
+    n = cli.clb.ConfXmlCli()
+    if n == 0:
+        cli.savexml(r"%s"%(XML_FILE))
+        print XML_FILE
+    elif n == 1:
+        print 'ConfXmlCli() return 1, please reboot and try'
+    else:
+        print 'ConfXmlCli() return unknow error'
+    sys.exit(n)
 
 def set_bios(bios_items):
     sys.path.append(r"%s"%(XML_PATH))
     import XmlCli as cli
     cli.clb._setCliAccess("linux")
-    try:
-        cli.clb.ConfXmlCli()
-    except:
-        print 'error'
-        sys.exit(2)
-    cli.CvProgKnobs("%s"%(bios_items))
-    print 'Set ' + bios_items + ' done.'
+    n = cli.clb.ConfXmlCli()
+    if n == 0:
+        cli.CvProgKnobs("%s"%(bios_items))
+        print 'Set ' + bios_items + ' done.'
+    elif n == 1:
+        print 'ConfXmlCli() return 1, please reboot and try'
+    else:
+        print 'ConfXmlCli() return unknow error'
+    sys.exit(n)
 
 def set_ini_bios(ini_path):
     sys.path.append(r"%s"%(XML_PATH))
     import XmlCli as cli
     cli.clb._setCliAccess("linux")
-    try:
-        cli.clb.ConfXmlCli()
-    except:
-        print 'error'
-        sys.exit(2)
-    cli.clb.KnobsIniFile=r"%s"%(ini_path)
-    cli.CvProgKnobs()
+    n = cli.clb.ConfXmlCli()
+    if n == 0:
+        cli.clb.KnobsIniFile=r"%s"%(ini_path)
+        cli.CvProgKnobs()
+    elif n == 1:
+        print 'ConfXmlCli() return 1, please reboot and try'
+    else:
+        print 'ConfXmlCli() return unknow error'
+    sys.exit(n)
 
 def main(argv):
     get_type = ''
